@@ -1,64 +1,33 @@
 import React from "react";
+import "../styles/Form.css"
 
 const Form = () => {
-  const [quizName, setQuizName] = useState("");
-  const [description, setDescription] = useState("");
-  const [gradingSystem, setGradingSystem] = useState("");
-  const [timeLimit, setTimeLimit] = useState("");
 
-  const handleQuizNameChange = (event) => {
-    setQuizName(event.target.value);
-  };
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleGradingSystemChange = (event) => {
-    setGradingSystem(event.target.value);
-  };
-
-  const handleTimeLimitChange = (event) => {
-    setTimeLimit(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handle form submission here
-  };
-
+    const handleSubmit =(e)=>{
+     e.preventDefault();
+     console.log(e.target.children[0].children[0].value);
+    }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Quiz Name:
-        <input type="text" value={quizName} onChange={handleQuizNameChange} />
-      </label>
-      <br />
-      <label>
-        Description:
-        <textarea value={description} onChange={handleDescriptionChange} />
-      </label>
-      <br />
-      <label>
-        Points/Grading System:
-        <input
-          type="text"
-          value={gradingSystem}
-          onChange={handleGradingSystemChange}
-        />
-      </label>
-      <br />
-      <label>
-        Time Limit (in minutes):
-        <input
-          type="number"
-          value={timeLimit}
-          onChange={handleTimeLimitChange}
-        />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+     <div className="form-container">
+
+        <h2>Quiz-Form</h2>
+      <form className="form-data" onSubmit={handleSubmit}>
+        <label>
+          QuizName : <input type="text" required />
+        </label>
+        <label >
+           Description : <textarea name="" required id="" cols="20" rows="5"></textarea> 
+        </label>
+        <label >
+          Points/grading system : <input type="text" required />  
+        </label>
+        <label>
+            time limit: <input type="number" required />
+        </label>
+         <input type="submit" value="create-quiz" />
+      </form>
+     </div>
+    
   );
 };
 
